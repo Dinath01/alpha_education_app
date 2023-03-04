@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "431052474383",
+    "project_id": "alpha-education-799d3",
+    "storage_bucket": "alpha-education-799d3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:431052474383:android:5c067e97009584adbc3b7a",
+        "android_client_info": {
+          "package_name": "com.the.alpha_build_one"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "431052474383-029o79v7vfrtn40hh6vaipetjje3qp2m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB87vK9cNBIgTlYf4aVD2mdptU0htgypOw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "431052474383-029o79v7vfrtn40hh6vaipetjje3qp2m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
