@@ -1,6 +1,3 @@
-import 'dart:io';
-import 'dart:typed_data';
-import 'dart:ui'as ui;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
 import '../utils/colors.dart';
@@ -23,9 +20,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController _contactNumberController = TextEditingController();
   TextEditingController _schoolTextController = TextEditingController();
   TextEditingController _addTextController = TextEditingController();
+  late String data;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    var center;
+    var alignment;
+    return SafeArea(
+        child: Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -76,25 +77,35 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     child: ElevatedButton(
                       style: buttonPrimary,
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SignUpScreen()));
+                        setState(() {
+                          data = TextEditingController() as String;
+                        });
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //         builder: (context) => SignUpScreen()));
                       },
                       child: Text(
-                        'Register',
+                        'Register & Generate The QR Code',
                         style: TextStyle(
+                          
                           fontSize: 22,
                           color: Color.fromARGB(255, 114, 39, 200),
                         ),
                       ),
                     ),
+                    child: Center(
+                      child: QrImage(
+                        data: '$data',
+                        version: QrVersions.auto,
+                        size: 120,
+                       ),
+                    )
                   ),
                 ],
               ),
             ),
           )),
-    );
-  }}
-
-
+    ));
+  }
+}
