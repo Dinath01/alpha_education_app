@@ -12,7 +12,7 @@ Image logoWidget(String imageName) {
 }
 
 TextField reusableTextField(String text, IconData icon, bool isPasswordType,
-    TextEditingController controller) {
+    TextEditingController controller, Null Function(dynamic value) param4) {
   return TextField(
     controller: controller,
     obscureText: isPasswordType,
