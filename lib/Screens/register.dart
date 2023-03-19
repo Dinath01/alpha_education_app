@@ -1,5 +1,4 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter/rendering.dart';
+
 import 'package:qr_flutter/qr_flutter.dart';
 import '../utils/colors.dart';
 import 'package:flutter/material.dart';
@@ -17,11 +16,8 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController _nameTextController = TextEditingController();
-  TextEditingController _GradeTextController = TextEditingController();
-  TextEditingController _contactNumberController = TextEditingController();
-  TextEditingController _schoolTextController = TextEditingController();
-  TextEditingController _addTextController = TextEditingController();
   late String data;
+  
   @override
   Widget build(BuildContext context) {
     var center;
@@ -48,7 +44,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
           child: SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.fromLTRB(20, 120, 20, 0),
+              padding: EdgeInsets.fromLTRB(20, 50, 20, 0),
               child: Column(
                 children: [
                   const SizedBox(
@@ -60,17 +56,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     height: 20,
                   ),
                   reusableTextField('Grade', Icons.person_outline, false,
-                      _GradeTextController),
+                      _nameTextController),
                   const SizedBox(
                     height: 20,
                   ),
                   reusableTextField('School', Icons.person_outline, false,
-                      _schoolTextController),
+                      _nameTextController),
                   const SizedBox(
                     height: 20,
                   ),
                   reusableTextField('Adress', Icons.person_outline, false,
-                      _addTextController),
+                      _nameTextController),
                   const SizedBox(
                     height: 40,
                   ),
@@ -86,7 +82,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           child: QrImage(
                             data: '$data',
                             version: QrVersions.auto,
-                            size: 50,
+                            size: 15,
                           ),
                         );
                         // Navigator.push(
