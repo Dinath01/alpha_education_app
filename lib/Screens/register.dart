@@ -1,11 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 import '../utils/colors.dart';
 import 'package:flutter/material.dart';
 import '../Screens/register.dart';
 import '../Widgets/widgets.dart';
 import '../Widgets/buttons.dart';
-import 'package:qr_flutter/qr_flutter.dart';
+
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -78,8 +79,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       style: buttonPrimary,
                       onPressed: () {
                         setState(() {
-                          data = TextEditingController() as String;
+                          data = _nameTextController.text;
                         });
+                        child:
+                        Center(
+                          child: QrImage(
+                            data: '$data',
+                            version: QrVersions.auto,
+                            size: 50,
+                          ),
+                        );
                         // Navigator.push(
                         //     context,
                         //     MaterialPageRoute(
@@ -88,19 +97,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       child: Text(
                         'Register & Generate The QR Code',
                         style: TextStyle(
-                          
-                          fontSize: 22,
+                          fontSize: 15,
                           color: Color.fromARGB(255, 114, 39, 200),
                         ),
                       ),
                     ),
-                    child: Center(
-                      child: QrImage(
-                        data: '$data',
-                        version: QrVersions.auto,
-                        size: 120,
-                       ),
-                    )
                   ),
                 ],
               ),
