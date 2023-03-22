@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import '../Screens/scanner.dart';
 import 'package:flutter/material.dart';
-//import '../Screens/qr_page.dart';
 import '../Screens/search.dart';
 import '../utils/colors.dart';
 import '../Widgets/widgets.dart';
@@ -47,7 +47,7 @@ class _SubjectPageState extends State<SubjectPage> {
               InkWell(
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SubjectPage()));
+                      MaterialPageRoute(builder: (context) => Qrscan(title: '',)));
                 },
                 child: Container(
                   decoration: BoxDecoration(

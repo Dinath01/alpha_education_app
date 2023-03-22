@@ -38,6 +38,7 @@ dependencies:
   cloud_firestore: ^4.4.3
   qr_flutter: ^4.0.0
   path_provider: ^2.0.13
+  flutter_qr_scanner: /any
 
 dev_dependencies:
   flutter_test:
