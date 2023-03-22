@@ -98,11 +98,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     Icons.person_outline,
                     false,
                     _nameTextController,
-                    (value) {
-                      setState(() {
-                        qrData = '${_nameTextController.text}';
-                      });
-                    },
                   ),
                   const SizedBox(height: 20),
                   reusableTextField(
@@ -110,11 +105,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     Icons.person_outline,
                     false,
                     _GradeTextController,
-                    (value) {
-                      setState(() {
-                        qrData = '${_GradeTextController.text}';
-                      });
-                    },
                   ),
                   const SizedBox(height: 20),
                   reusableTextField(
@@ -122,11 +112,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     Icons.person_outline,
                     false,
                     _SchoolTextController,
-                    (value) {
-                      setState(() {
-                        qrData = '${_SchoolTextController.text}';
-                      });
-                    },
                   ),
                   const SizedBox(height: 20),
                   reusableTextField(
@@ -134,11 +119,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     Icons.person_outline,
                     false,
                     _AddressTextController,
-                    (value) {
-                      setState(() {
-                        qrData = '${_AddressTextController.text}';
-                      });
-                    },
                   ),
                   const SizedBox(height: 40),
                   Center(

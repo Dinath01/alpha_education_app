@@ -48,7 +48,7 @@ class LogInScreenState extends State<LogInScreen> {
               const SizedBox(
                 height: 20,
               ),
-              reusableTextField('Name', Icons.person_outline, false, _nameTextController, _GradeTextController as Null Function(dynamic value)),
+              reusableTextField('Name', Icons.person_outline, false, _nameTextController),
               const SizedBox(
                 height: 20,
               ),
