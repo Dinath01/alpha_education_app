@@ -37,8 +37,11 @@ dependencies:
   # Firebase core and auth
   cloud_firestore: ^4.4.3
   qr_flutter: ^4.0.0
+<<<<<<< HEAD
   path_provider: ^2.0.13
   flutter_qr_scanner: /any
+=======
+>>>>>>> parent of 196fff8 (added the qr code with a save button which generates a qr to all the four data)
 
 dev_dependencies:
   flutter_test:

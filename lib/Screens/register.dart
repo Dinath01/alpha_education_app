@@ -1,8 +1,3 @@
-import 'dart:io';
-import 'dart:ui' as ui;
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import '../utils/colors.dart';
 import 'package:flutter/material.dart';
@@ -19,46 +14,7 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController _nameTextController = TextEditingController();
-  TextEditingController _GradeTextController = TextEditingController();
-  TextEditingController _SchoolTextController = TextEditingController();
-  TextEditingController _AddressTextController = TextEditingController();
-  String qrData = '';
-
-  Future<void> _saveQrCode() async {
-    try {
-      RenderRepaintBoundary boundary = qrImageKey.currentContext!
-          .findRenderObject() as RenderRepaintBoundary;
-      ui.Image image = await boundary.toImage(pixelRatio: 3.0);
-      ByteData? byteData =
-          await image.toByteData(format: ui.ImageByteFormat.png);
-      Uint8List pngBytes = byteData!.buffer.asUint8List();
-      Directory? directory = await getExternalStorageDirectory();
-      if (directory != null) {
-        String path = directory.path + '/qr_code.png';
-        File file = File(path);
-        await file.writeAsBytes(pngBytes);
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('QR code saved to $path'),
-          ),
-        );
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Could not save QR code'),
-          ),
-        );
-      }
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Error: $e'),
-        ),
-      );
-    }
-  }
-
-  GlobalKey qrImageKey = GlobalKey();
+  String? data;
 
   @override
   Widget build(BuildContext context) {
@@ -98,47 +54,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     Icons.person_outline,
                     false,
                     _nameTextController,
-                    (value) {
-                      setState(() {
-                        qrData = '${_nameTextController.text}';
-                      });
-                    },
                   ),
                   const SizedBox(height: 20),
                   reusableTextField(
                     'Grade',
                     Icons.person_outline,
                     false,
-                    _GradeTextController,
-                    (value) {
-                      setState(() {
-                        qrData = '${_GradeTextController.text}';
-                      });
-                    },
+                    _nameTextController,
                   ),
                   const SizedBox(height: 20),
                   reusableTextField(
                     'School',
                     Icons.person_outline,
                     false,
-                    _SchoolTextController,
-                    (value) {
-                      setState(() {
-                        qrData = '${_SchoolTextController.text}';
-                      });
-                    },
+                    _nameTextController,
                   ),
                   const SizedBox(height: 20),
                   reusableTextField(
                     'Address',
                     Icons.person_outline,
                     false,
-                    _AddressTextController,
-                    (value) {
-                      setState(() {
-                        qrData = '${_AddressTextController.text}';
-                      });
-                    },
+                    _nameTextController,
                   ),
                   const SizedBox(height: 40),
                   Center(
@@ -146,8 +82,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       style: buttonPrimary,
                       onPressed: () {
                         setState(() {
-                          qrData =
-                              '${_nameTextController.text} ${_GradeTextController.text} ${_SchoolTextController.text} ${_AddressTextController.text}';
+                          data = _nameTextController.text;
                         });
                       },
                       child: Text(
@@ -159,38 +94,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                     ),
                   ),
-                  if (qrData.isNotEmpty) ...[
+                  if (data != null) ...[
                     const SizedBox(height: 20),
                     Center(
-                      key: qrImageKey,
-                      child: RepaintBoundary(
-                        child: QrImage(
-                          data: qrData,
-                          version: QrVersions.auto,
-                          size: 200.0,
-                          backgroundColor: Colors.white,
-                        ),
+                      child: QrImage(
+                        data: data!,
+                        version: QrVersions.auto,
+                        size: 200.0,
+                        backgroundColor: Colors.white,
                       ),
                     ),
                   ],
-                  const SizedBox(height: 20),
-                  Column(
-                    children: [
-                      ElevatedButton(
-                        style: buttonPrimary,
-                        onPressed: () {
-                          _saveQrCode();
-                        },
-                        child: Text(
-                          'Save QR Code',
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: Color.fromARGB(255, 114, 39, 200),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
                 ],
               ),
             ),
