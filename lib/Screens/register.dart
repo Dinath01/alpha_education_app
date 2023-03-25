@@ -142,8 +142,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   if (qrData.isNotEmpty) ...[
                     const SizedBox(height: 20),
                     Center(
-                      key: qrImageKey,
                       child: RepaintBoundary(
+                        key: qrImageKey,
                         child: QrImage(
                           data: qrData,
                           version: QrVersions.auto,
