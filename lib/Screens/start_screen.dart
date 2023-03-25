@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:alpha_build_one/Screens/grade_select.dart';
+import 'package:alpha_build_one/Screens/scanner.dart';
 
 import '../Screens/register.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +47,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => SearchScreen()));
+                            builder: (context) => QRScanScreen()));
                   },
                   child: Text(
                     'Search Student',
