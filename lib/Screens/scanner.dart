@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:permission_handler/permission_handler.dart';
+import '../utils/colors.dart';
 
 class QRScanScreen extends StatefulWidget {
   @override
@@ -35,12 +36,26 @@ class _QRScanScreenState extends State<QRScanScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: hexStringToColor("CB2B93"),
       appBar: AppBar(
-        title: Text('QR Scanner'),
+        title: Text(
+          'QR Scanner',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: true,
       ),
       body: !isCameraPermissionGranted
           ? Center(
-              child: Text('Camera permission not granted'),
+              child: Text(
+                'Camera permission not granted',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
             )
           : QRView(
               key: qrKey,
@@ -80,11 +95,49 @@ class QRDisplayScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: hexStringToColor("9546C4"),
       appBar: AppBar(
-        title: Text('QR Code Data'),
+        title: Text(
+          'QR Code Data',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: true,
       ),
       body: Center(
-        child: Text(qrCodeData),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Class Fees and Attendance',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 20),
+            Text(
+              'QR Code Data:',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+              ),
+            ),
+            SizedBox(height: 10),
+            Text(
+              qrCodeData,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
