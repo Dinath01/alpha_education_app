@@ -47,7 +47,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => QRScanScreen()));
+                            builder: (context) => SearchScreen()));
                   },
                   child: Text(
                     'Search Student',

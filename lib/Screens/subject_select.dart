@@ -47,7 +47,7 @@ class _SubjectPageState extends State<SubjectPage> {
               InkWell(
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SubjectPage()));
+                      MaterialPageRoute(builder: (context) => QRScanScreen()));
                 },
                 child: Container(
                   decoration: BoxDecoration(
